@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Ahsan ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #080817;
+    color: white;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, #612f9b40, transparent 35%),
+      radial-gradient(circle at 80% 80%, #e7478840, transparent 35%);
+    pointer-events: none;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    color: white;
+    animation: twinkle 2s infinite alternate;
+}
+
+.container {
+    width: min(900px, 100%);
+    margin: auto;
+    padding: 35px 20px 70px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hidden { display: none !important; }
+
+/* Opening screen */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #090817;
+    text-align: center;
+    padding: 25px;
+    transition: opacity 1s, visibility 1s;
+}
+
+#intro h1 {
+    font-family: 'Pacifico', cursive;
+    color: #f5a8ff;
+    margin: 15px;
+    font-size: clamp(30px, 7vw, 48px);
+}
+
+.gift {
+    font-size: 110px;
+    cursor: pointer;
+    animation: giftBounce 1.3s infinite;
+    filter: drop-shadow(0 0 30px #c026d855);
+}
+
+#intro p { color: #c9c2e5; }
+
+.open-btn {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    padding: 15px 28px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    margin-top: 24px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Main heading */
+
+.badge {
+    display: inline-block;
+    border: 1px solid #e879f855;
+    background: #a855f720;
+    border-radius: 40px;
+    padding: 9px 18px;
+    letter-spacing: 2px;
+    color: #e9a9ff;
+    font-size: 11px;
+}
+
+.cake {
+    font-size: 80px;
+    display: block;
+    margin: 25px 0 10px;
+    animation: cakeFloat 2.5s infinite ease-in-out;
+}
+
+h1.main-title {
+    font-size: clamp(36px, 9vw, 76px);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #d8b4fe, #ff9acb, #7de9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: #bdb7d8;
+    line-height: 1.9;
+    max-width: 550px;
+    margin: 20px auto 35px;
+    font-size: 14px;
+}
+
+/* Gallery */
+
+.section-title {
+    font-size: 27px;
+    margin: 45px 0 10px;
+}
+
+.section-text {
+    color: #a9a3c5;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+
+
+
+.photo-card {
+    background: linear-gradient(145deg, #ffffff12, #ffffff04);
+    border: 1px solid #ffffff15;
+    border-radius: 22px;
+    padding: 12px;
+    overflow: hidden;
+    animation: reveal 1s both;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.photo-card:nth-child(2) { animation-delay: .2s; }
+.photo-card:nth-child(3) { animation-delay: .4s; }
+
+.photo-card:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 15px 40px #d946ef25;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    background: #11112a;
+    display: block;
+    border-radius: 15px;
+    transition: transform .5s;
+}
+
+.photo-card:hover img { transform: scale(1.05); }
+
+.photo-caption {
+    padding: 15px 5px 5px;
+    color: #f0b9ff;
+    font-size: 13px;
+}
+
+/* Wishes */
+
+.wish-card {
+    margin: 35px 0;
+    padding: 30px 24px;
+    background: #ffffff0b;
+    border: 1px solid #ffffff18;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.wish-card h2 {
+    color: #f2b5ff;
+    margin-bottom: 18px;
+}
+
+.wish-card p {
+    font-size: 14px;
+    line-height: 2;
+    color: #d8d2ed;
+}
+
+/* Surprise */
+
+#surprise {
+    display: none;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 22px;
+    background: #d946ef12;
+    border: 1px solid #d946ef55;
+    animation: reveal .8s both;
+}
+
+#surprise h2 {
+    color: #f6a7e1;
+    margin-bottom: 15px;
+}
+
+#surprise p {
+    color: #ded7f3;
+    line-height: 2;
+    font-size: 14px;
+}
+
+.btn {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 40px;
+    color: white;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    box-shadow: 0 0 25px #c026d833;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 20px;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+.footer {
+    color: #8c86aa;
+    margin-top: 45px;
+    font-size: 12px;
+}
+
+/* Floating effects */
+
+.float-item {
+    position: fixed;
+    bottom: -60px;
+    pointer-events: none;
+    z-index: 5;
+    animation: floatUp linear forwards;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    z-index: 200;
+    pointer-events: none;
+    animation: fall 4s linear forwards;
+}
+
+.fade-in {
+    animation: reveal 1.2s both;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes giftBounce {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes cakeFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) rotate(0); opacity: 0; }
+    10% { opacity: 1; }
+    to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@media(max-width:600px) {
+    .container { padding: 25px 15px 55px; }
+    .gallery { grid-template-columns: 1fr; gap: 20px; }
+    .photo-card img { height: 300px; }
+    .wish-card { padding: 24px 18px; }
+    .cake { font-size: 65px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<!-- Opening gift screen -->
+<div id="intro">
+    <div class="gift" onclick="startBirthday()">🎁</div>
+    <h1>A Surprise For Ahsan</h1>
+    <p>Someone made something special for you...</p>
+    <button class="open-btn" onclick="startBirthday()">
+        Open Your Gift ✨
+    </button>
+</div>
+
+<!-- Main birthday page -->
+<div class="container" id="main" style="display:none">
+
+    <div class="badge">A SPECIAL DAY FOR SOMEONE SPECIAL</div>
+
+    <span class="cake">🎂</span>
+
+    <h1 class="main-title">
+        Happy Birthday<br>
+        <span class="gradient" id="name">Ahsan</span>
+    </h1>
+
+    <p class="subtitle">
+        Today the world celebrates someone amazing.
+        May your day be filled with laughter, love, happiness
+        and unforgettable memories! ❤️
+    </p>
+
+    <h2 class="section-title gradient">📸 Beautiful Memories</h2>
+    <p class="section-text">Some moments deserve to be remembered forever.</p>
+
+    <!-- Photo gallery -->
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="pics/ahsan1.png" alt="Ahsan's photo 1">
+            <div class="photo-caption">✨ The best moments</div>
+        </div>
+
+        <div class="photo-card">
+            <img src="pics/ahsan2.png" alt="Ahsan's photo 2">
+            <div class="photo-caption">💫 Keep shining</div>
+        </div>
+
+        <div class="photo-card">
+            <img src="pics/ahsan3.png" alt="Ahsan's photo 3">
+            <div class="photo-caption">❤️ Stay awesome</div>
+        </div>
+
+    </div>
+
+    <div class="wish-card">
+        <h2>💌 A Birthday Wish</h2>
+        <p>
+            May Allah bless you with a life full of happiness,
+            peace, success, good health and endless barakah.
+            May every dream in your heart become a beautiful reality.
+            <br><br>
+            May you always find light in difficult times, reasons
+            to smile every day, and people who genuinely care about you.
+            <br><br>
+            Keep being the wonderful person you are.
+            May this new chapter be your best one yet!
+        </p>
+
+        <button class="btn" onclick="openSurprise()">
+            🎉 Tap For Another Surprise
+        </button>
+
+        <div id="surprise">
+            <h2>🌟 You Are Truly Special!</h2>
+            <p>
+                A new year of your life means new dreams,
+                new opportunities and new memories.
+                <br><br>
+                Never stop believing in yourself.
+                The best days of your life are still waiting for you.
+                <br><br>
+                Happy Birthday Ahsan! 🎂❤️
+                <br>
+                Allah hamesha tumhein khush rakhe. Ameen.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="gradient">Make a Wish 🌠</h2>
+    <p class="subtitle">
+        May all your wishes come true.
+        Keep smiling, keep growing and keep shining!
+    </p>
+
+    <div class="footer">
+        Created with ❤️ especially for Ahsan<br><br>
+        Happy Birthday 🎂
+    </div>
+</div>
+
+<script>
+// Create background stars
+for (let i = 0; i < 70; i++) {
+    let star = document.createElement("span");
+    star.className = "star";
+    star.textContent = "✦";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (5 + Math.random() * 12) + "px";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    document.getElementById("stars").appendChild(star);
+}
+
+// Open birthday page
+function startBirthday() {
+    const intro = document.getElementById("intro");
+    intro.style.opacity = "0";
+    intro.style.visibility = "hidden";
+
+    document.getElementById("main").style.display = "block";
+    document.getElementById("main").classList.add("fade-in");
+
+    window.scrollTo({top: 0, behavior: "smooth"});
+
+    burst();
+}
+
+// Floating hearts and balloons
+function floatingEmojis() {
+    const list = ["💖", "🎈", "✨", "🌟", "🎉", "💕"];
+    const el = document.createElement("div");
+
+    el.className = "float-item";
+    el.textContent = list[Math.floor(Math.random() * list.length)];
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (18 + Math.random() * 24) + "px";
+    el.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 12000);
+}
+
+setInterval(floatingEmojis, 650);
+
+// Confetti burst
+function burst() {
+    const icons = ["🎊", "✨", "🎉", "💖", "⭐", "🎈"];
+
+    for (let i = 0; i < 65; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+        el.textContent = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = (14 + Math.random() * 20) + "px";
+        el.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 5000);
+    }
+}
+
+// Surprise button
+function openSurprise() {
+    const box = document.getElementById("surprise");
+    box.style.display = "block";
+
+    burst();
+
+    box.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+</script>
+
+</body>
+</html>
